@@ -1,0 +1,7 @@
+beautifulsoup4==4.13.5
+setuptools==80.9.0
+soupsieve==2.8
+tree-sitter==0.20.4
+tree-sitter-javascript==0.25.0
+tree-sitter-languages==1.10.2
+typing_extensions==4.15.0

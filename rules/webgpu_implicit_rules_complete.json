@@ -1,0 +1,390 @@
+{
+  "schema_version": "0.6",
+  "notes": [
+    "Implicit (stateful + semantic) constraints for WebGPU mutation/testing.",
+    "Selectors: 'this' is the receiver; 'arg.<name>' or 'arg[0]' for arguments; dotted paths allowed; '*' wildcards allowed in op names.",
+    "Enum names should match explicit rules (GPUBufferUsage, GPUTextureUsage, GPUMapMode, GPUShaderStage, GPUColorWrite, etc.).",
+    "Rule kinds are intentionally small and composable so a mutator can implement a subset and still get value."
+  ],
+  "state_machine": {
+    "GPUBuffer": {
+      "states": ["unmapped", "mapping", "mapped", "destroyed"],
+      "initial": "unmapped",
+      "transitions": [
+        { "on": "mapAsync(start)", "from": "unmapped", "to": "mapping" },
+        { "on": "mapAsync(resolve)", "from": "mapping", "to": "mapped" },
+        { "on": "unmap", "from": "mapped", "to": "unmapped" },
+        { "on": "destroy", "from": ["unmapped", "mapping", "mapped"], "to": "destroyed" }
+      ]
+    },
+    "GPUTexture": {
+      "states": ["valid", "destroyed"],
+      "initial": "valid",
+      "transitions": [
+        { "on": "destroy", "from": "valid", "to": "destroyed" }
+      ]
+    },
+    "GPUTextureView": {
+      "states": ["valid", "destroyed"],
+      "initial": "valid",
+      "transitions": []
+    },
+    "GPUSampler": {
+      "states": ["valid"],
+      "initial": "valid",
+      "transitions": []
+    },
+    "GPUCommandEncoder": {
+      "states": ["recording", "finished"],
+      "initial": "recording",
+      "transitions": [
+        { "on": "finish", "from": "recording", "to": "finished" }
+      ]
+    },
+    "GPUCommandBuffer": {
+      "states": ["finished", "submitted"],
+      "initial": "finished",
+      "transitions": [
+        { "on": "submit", "from": "finished", "to": "submitted" }
+      ]
+    },
+    "GPURenderPassEncoder": {
+      "states": ["active", "ended"],
+      "initial": "active",
+      "transitions": [
+        { "on": "end", "from": "active", "to": "ended" }
+      ]
+    },
+    "GPUComputePassEncoder": {
+      "states": ["active", "ended"],
+      "initial": "active",
+      "transitions": [
+        { "on": "end", "from": "active", "to": "ended" }
+      ]
+    },
+    "GPURenderBundleEncoder": {
+      "states": ["recording", "finished"],
+      "initial": "recording",
+      "transitions": [
+        { "on": "finish", "from": "recording", "to": "finished" }
+      ]
+    },
+    "GPURenderBundle": {
+      "states": ["finished"],
+      "initial": "finished",
+      "transitions": []
+    },
+    "GPUQuerySet": {
+      "states": ["valid", "destroyed"],
+      "initial": "valid",
+      "transitions": [
+        { "on": "destroy", "from": "valid", "to": "destroyed" }
+      ]
+    },
+    "GPUShaderModule": { "states": ["valid"], "initial": "valid", "transitions": [] },
+    "GPURenderPipeline": { "states": ["valid"], "initial": "valid", "transitions": [] },
+    "GPUComputePipeline": { "states": ["valid"], "initial": "valid", "transitions": [] },
+    "GPUPipelineLayout": { "states": ["valid"], "initial": "valid", "transitions": [] },
+    "GPUBindGroupLayout": { "states": ["valid"], "initial": "valid", "transitions": [] },
+    "GPUBindGroup": { "states": ["valid"], "initial": "valid", "transitions": [] },
+    "GPUExternalTexture": {
+      "states": ["valid", "expired"],
+      "initial": "valid",
+      "transitions": [
+        { "on": "lifetimeEnd", "from": "valid", "to": "expired" }
+      ]
+    },
+    "GPUQueue": {
+      "states": ["idle", "busy"],
+      "initial": "idle",
+      "transitions": [
+        { "on": "submit", "from": "idle", "to": "busy" },
+        { "on": "onSubmittedWorkDone", "from": "busy", "to": "idle" }
+      ]
+    },
+    "GPUCanvasContext": {
+      "states": ["unconfigured", "configured"],
+      "initial": "unconfigured",
+      "transitions": [
+        { "on": "configure", "from": "unconfigured", "to": "configured" },
+        { "on": "unconfigure", "from": "configured", "to": "unconfigured" }
+      ]
+    }
+  },
+  "ops": [
+    {
+      "op": "GPU.requestAdapter",
+      "requires": [ { "kind": "secure_context" } ],
+      "effects": [ { "kind": "returns_object", "type": "GPUAdapter|null" } ]
+    },
+    {
+      "op": "GPUAdapter.requestDevice",
+      "requires": [
+        { "kind": "subset_of", "target": "arg.descriptor.requiredFeatures[*]", "set": "this.features[*]" },
+        { "kind": "limits_leq", "target": "arg.descriptor.requiredLimits", "limit_source": "this.limits" }
+      ],
+      "effects": [
+        { "kind": "returns_object", "type": "GPUDevice" },
+        { "kind": "creates", "object": "GPUQueue", "as": "ret.queue" }
+      ]
+    },
+    {
+      "op": "GPUDevice.createBuffer",
+      "requires": [
+        { "kind": "multiple_of", "target": "arg.descriptor.size", "value": 4 },
+        { "kind": "forbid_flag_pair", "enum": "GPUBufferUsage", "target": "arg.descriptor.usage", "pair": ["MAP_READ", "MAP_WRITE"] }
+      ],
+      "effects": [ { "kind": "returns_object", "type": "GPUBuffer" } ]
+    },
+    { "op": "GPUDevice.createTexture", "effects": [ { "kind": "returns_object", "type": "GPUTexture" } ] },
+    { "op": "GPUDevice.createSampler", "effects": [ { "kind": "returns_object", "type": "GPUSampler" } ] },
+    { "op": "GPUDevice.createBindGroupLayout", "effects": [ { "kind": "returns_object", "type": "GPUBindGroupLayout" } ] },
+    { "op": "GPUDevice.createPipelineLayout", "effects": [ { "kind": "returns_object", "type": "GPUPipelineLayout" } ] },
+    { "op": "GPUDevice.createBindGroup", "effects": [ { "kind": "returns_object", "type": "GPUBindGroup" } ] },
+    {
+      "op": "GPUDevice.createShaderModule",
+      "requires": [ { "kind": "string_non_empty", "target": "arg.descriptor.code" } ],
+      "effects": [ { "kind": "returns_object", "type": "GPUShaderModule" } ]
+    },
+    { "op": "GPUDevice.createRenderPipeline", "effects": [ { "kind": "returns_object", "type": "GPURenderPipeline" } ] },
+    { "op": "GPUDevice.createComputePipeline", "effects": [ { "kind": "returns_object", "type": "GPUComputePipeline" } ] },
+    {
+      "op": "GPUDevice.createCommandEncoder",
+      "effects": [
+        { "kind": "returns_object", "type": "GPUCommandEncoder" },
+        { "kind": "post_state", "target": "ret.state", "to": "recording" }
+      ]
+    },
+    { "op": "GPUDevice.createQuerySet", "effects": [ { "kind": "returns_object", "type": "GPUQuerySet" } ] },
+    {
+      "op": "GPUDevice.createRenderBundleEncoder",
+      "effects": [
+        { "kind": "returns_object", "type": "GPURenderBundleEncoder" },
+        { "kind": "post_state", "target": "ret.state", "to": "recording" }
+      ]
+    },
+    { "op": "GPUDevice.importExternalTexture", "effects": [ { "kind": "returns_object", "type": "GPUExternalTexture" } ] },
+    {
+      "op": "GPUBuffer.mapAsync",
+      "requires": [
+        { "kind": "state_eq", "target": "this.state", "equals": "unmapped" },
+        {
+          "kind": "map_mode_requires_usage",
+          "target": "arg.mode",
+          "mapping": { "READ": "MAP_READ", "WRITE": "MAP_WRITE" },
+          "enum": "GPUMapMode",
+          "usage_enum": "GPUBufferUsage",
+          "buffer_usage_target": "this.usage"
+        }
+      ],
+      "effects": [
+        { "kind": "post_state", "target": "this.state", "to": "mapping" },
+        { "kind": "async_then", "on": "resolve", "post_state": { "target": "this.state", "to": "mapped" } }
+      ]
+    },
+    { "op": "GPUBuffer.getMappedRange", "requires": [ { "kind": "state_eq", "target": "this.state", "equals": "mapped" } ] },
+    { "op": "GPUBuffer.unmap", "requires": [ { "kind": "state_eq", "target": "this.state", "equals": "mapped" } ], "effects": [ { "kind": "post_state", "target": "this.state", "to": "unmapped" } ] },
+    { "op": "GPUBuffer.destroy", "effects": [ { "kind": "post_state", "target": "this.state", "to": "destroyed" } ] },
+    {
+      "op": "GPUQueue.writeBuffer",
+      "requires": [
+        { "kind": "state_ne", "target": "arg.buffer.state", "not": "mapped" },
+        { "kind": "flags_include", "enum": "GPUBufferUsage", "target": "arg.buffer.usage", "flags": ["COPY_DST"] },
+        { "kind": "multiple_of", "target": "arg.bufferOffset", "value": 4 },
+        { "kind": "multiple_of", "target": "arg.size", "value": 4 }
+      ]
+    },
+    {
+      "op": "GPUQueue.writeTexture",
+      "requires": [
+        { "kind": "flags_include", "enum": "GPUTextureUsage", "target": "arg.destination.texture.usage", "flags": ["COPY_DST"] },
+        { "kind": "texture_write_layout_ok", "target": { "dataLayout": "arg.dataLayout", "size": "arg.size" } }
+      ]
+    },
+    {
+      "op": "GPUQueue.copyExternalImageToTexture",
+      "requires": [
+        { "kind": "flags_include", "enum": "GPUTextureUsage", "target": "arg.destination.texture.usage", "flags": ["COPY_DST", "RENDER_ATTACHMENT"] }
+      ]
+    },
+    {
+      "op": "GPUQueue.submit",
+      "requires": [
+        { "kind": "all_state_eq", "target": "arg.commandBuffers[*].state", "equals": "finished" },
+        { "kind": "all_resources_unmapped_in_command_buffers", "target": "arg.commandBuffers[*]" }
+      ],
+      "effects": [
+        { "kind": "post_state", "target": "arg.commandBuffers[*].state", "to": "submitted" }
+      ]
+    },
+    { "op": "GPUQueue.onSubmittedWorkDone", "effects": [ { "kind": "queue_to_idle" } ] },
+    {
+      "op": "GPUCommandEncoder.finish",
+      "requires": [ { "kind": "state_eq", "target": "this.state", "equals": "recording" } ],
+      "effects": [
+        { "kind": "returns_object", "type": "GPUCommandBuffer" },
+        { "kind": "post_state", "target": "this.state", "to": "finished" }
+      ]
+    },
+    {
+      "op": "GPUCommandEncoder.clearBuffer",
+      "requires": [
+        { "kind": "multiple_of", "target": "arg.offset", "value": 4 },
+        { "kind": "multiple_of", "target": "arg.size", "value": 4, "when": "arg.size != null" }
+      ]
+    },
+    {
+      "op": "GPUCommandEncoder.copyBufferToBuffer",
+      "requires": [
+        { "kind": "flags_include", "enum": "GPUBufferUsage", "target": "arg.source.usage", "flags": ["COPY_SRC"] },
+        { "kind": "flags_include", "enum": "GPUBufferUsage", "target": "arg.destination.usage", "flags": ["COPY_DST"] },
+        { "kind": "multiple_of", "target": "arg.sourceOffset", "value": 4 },
+        { "kind": "multiple_of", "target": "arg.destinationOffset", "value": 4 },
+        { "kind": "multiple_of", "target": "arg.size", "value": 4 }
+      ]
+    },
+    {
+      "op": "GPUCommandEncoder.copyTextureToBuffer",
+      "requires": [
+        { "kind": "flags_include", "enum": "GPUTextureUsage", "target": "arg.source.texture.usage", "flags": ["COPY_SRC"] },
+        { "kind": "flags_include", "enum": "GPUBufferUsage", "target": "arg.destination.buffer.usage", "flags": ["COPY_DST"] },
+        { "kind": "texture_copy_layout_ok", "target": { "bufferLayout": "arg.destination", "size": "arg.copySize" } }
+      ]
+    },
+    {
+      "op": "GPUCommandEncoder.copyBufferToTexture",
+      "requires": [
+        { "kind": "flags_include", "enum": "GPUBufferUsage", "target": "arg.source.buffer.usage", "flags": ["COPY_SRC"] },
+        { "kind": "flags_include", "enum": "GPUTextureUsage", "target": "arg.destination.texture.usage", "flags": ["COPY_DST"] },
+        { "kind": "texture_copy_layout_ok", "target": { "bufferLayout": "arg.source", "size": "arg.copySize" } }
+      ]
+    },
+    {
+      "op": "GPUCommandEncoder.copyTextureToTexture",
+      "requires": [
+        { "kind": "flags_include", "enum": "GPUTextureUsage", "target": "arg.source.texture.usage", "flags": ["COPY_SRC"] },
+        { "kind": "flags_include", "enum": "GPUTextureUsage", "target": "arg.destination.texture.usage", "flags": ["COPY_DST"] }
+      ]
+    },
+    {
+      "op": "GPUCommandEncoder.resolveQuerySet",
+      "requires": [
+        { "kind": "state_eq", "target": "arg.querySet.state", "equals": "valid" },
+        { "kind": "flags_include", "enum": "GPUBufferUsage", "target": "arg.destination.usage", "flags": ["COPY_DST"] },
+        { "kind": "multiple_of", "target": "arg.destinationOffset", "value": 256 },
+        { "kind": "min_value", "target": "arg.queryCount", "value": 1 }
+      ]
+    },
+    {
+      "op": "GPUCommandEncoder.beginRenderPass",
+      "requires": [
+        { "kind": "flags_include", "enum": "GPUTextureUsage", "target": "arg.descriptor.colorAttachments[*].view.texture.usage", "flags": ["RENDER_ATTACHMENT"] },
+        { "kind": "optional_flags_include", "when": "arg.descriptor.depthStencilAttachment != null", "enum": "GPUTextureUsage", "target": "arg.descriptor.depthStencilAttachment.view.texture.usage", "flags": ["RENDER_ATTACHMENT"] }
+      ],
+      "effects": [
+        { "kind": "returns_object", "type": "GPURenderPassEncoder" },
+        { "kind": "post_state", "target": "ret.state", "to": "active" }
+      ]
+    },
+    { "op": "GPURenderPassEncoder.setPipeline", "effects": [ { "kind": "mark", "target": "this._hasPipeline", "value": true } ] },
+    { "op": "GPURenderPassEncoder.setIndexBuffer", "effects": [ { "kind": "mark", "target": "this._hasIndexBuffer", "value": true } ] },
+    {
+      "op": "GPURenderPassEncoder.draw*",
+      "requires": [
+        { "kind": "state_eq", "target": "this.state", "equals": "active" },
+        { "kind": "order_requires", "target": "this._hasPipeline", "truthy": true }
+      ]
+    },
+    {
+      "op": "GPURenderPassEncoder.drawIndexed*",
+      "requires": [
+        { "kind": "state_eq", "target": "this.state", "equals": "active" },
+        { "kind": "order_requires", "target": "this._hasPipeline", "truthy": true },
+        { "kind": "mark_requires", "target": "this._hasIndexBuffer", "truthy": true }
+      ]
+    },
+    { "op": "GPURenderPassEncoder.executeBundles", "requires": [ { "kind": "all_state_eq", "target": "arg.bundles[*].state", "equals": "finished" } ] },
+    { "op": "GPURenderPassEncoder.end", "effects": [ { "kind": "post_state", "target": "this.state", "to": "ended" } ] },
+    {
+      "op": "GPUCommandEncoder.beginComputePass",
+      "effects": [
+        { "kind": "returns_object", "type": "GPUComputePassEncoder" },
+        { "kind": "post_state", "target": "ret.state", "to": "active" }
+      ]
+    },
+    { "op": "GPUComputePassEncoder.setPipeline", "effects": [ { "kind": "mark", "target": "this._hasPipeline", "value": true } ] },
+    {
+      "op": "GPUComputePassEncoder.dispatchWorkgroups*",
+      "requires": [
+        { "kind": "state_eq", "target": "this.state", "equals": "active" },
+        { "kind": "order_requires", "target": "this._hasPipeline", "truthy": true }
+      ]
+    },
+    { "op": "GPUComputePassEncoder.end", "effects": [ { "kind": "post_state", "target": "this.state", "to": "ended" } ] },
+    {
+      "op": "GPURenderBundleEncoder.finish",
+      "requires": [ { "kind": "state_eq", "target": "this.state", "equals": "recording" } ],
+      "effects": [
+        { "kind": "returns_object", "type": "GPURenderBundle" },
+        { "kind": "post_state", "target": "this.state", "to": "finished" }
+      ]
+    },
+    {
+      "op": "GPUCanvasContext.configure",
+      "requires": [
+        { "kind": "equals", "target": "arg.config.device.state", "value": "valid" },
+        { "kind": "flags_include", "enum": "GPUTextureUsage", "target": "arg.config.usage", "flags": ["RENDER_ATTACHMENT"] }
+      ],
+      "effects": [ { "kind": "post_state", "target": "this.state", "to": "configured" } ]
+    },
+    { "op": "GPUCanvasContext.unconfigure", "effects": [ { "kind": "post_state", "target": "this.state", "to": "unconfigured" } ] },
+    { "op": "GPUCanvasContext.getCurrentTexture", "requires": [ { "kind": "state_eq", "target": "this.state", "equals": "configured" } ], "effects": [ { "kind": "returns_object", "type": "GPUTexture" } ] }
+  ],
+  "binding_rules": {
+    "texture_binding": {
+      "when": "GPUBindGroupLayoutEntry.texture != null",
+      "resource": "GPUTextureView/Texture",
+      "must_include": { "enum": "GPUTextureUsage", "flags": ["TEXTURE_BINDING"] }
+    },
+    "storage_texture_binding": {
+      "when": "GPUBindGroupLayoutEntry.storageTexture != null",
+      "resource": "GPUTextureView/Texture",
+      "must_include": { "enum": "GPUTextureUsage", "flags": ["STORAGE_BINDING"] }
+    },
+    "uniform_buffer_binding": {
+      "when": "GPUBindGroupLayoutEntry.buffer.type == 'uniform'",
+      "resource": "GPUBuffer",
+      "must_include": { "enum": "GPUBufferUsage", "flags": ["UNIFORM"] }
+    },
+    "storage_buffer_binding": {
+      "when": "GPUBindGroupLayoutEntry.buffer.type in ['storage','read-only-storage']",
+      "resource": "GPUBuffer",
+      "must_include": { "enum": "GPUBufferUsage", "flags": ["STORAGE"] }
+    }
+  },
+  "ordering": {
+    "render": ["setPipeline", "setBindGroup*", "setVertexBuffer*", "setIndexBuffer*", "draw*"],
+    "compute": ["setPipeline", "setBindGroup*", "dispatch*"]
+  },
+  "helpers": {
+    "texture_copy_layout_ok": {
+      "doc": "Checks texel copy layout. bytesPerRow multiple of 256 when present; basic size minima.",
+      "rules": [
+        { "kind": "multiple_of", "target": "$.bufferLayout.bytesPerRow", "value": 256, "when": "$.bufferLayout.bytesPerRow != null" },
+        { "kind": "min_value", "target": "$.size.width", "value": 1 },
+        { "kind": "min_value", "target": "$.size.height", "value": 1 },
+        { "kind": "min_value", "target": "$.size.depthOrArrayLayers", "value": 1 }
+      ]
+    },
+    "texture_write_layout_ok": {
+      "doc": "Queue.writeTexture layout checks similar to copy; bytesPerRow multiple of 256 when present.",
+      "rules": [
+        { "kind": "multiple_of", "target": "$.dataLayout.bytesPerRow", "value": 256, "when": "$.dataLayout.bytesPerRow != null" },
+        { "kind": "min_value", "target": "$.size.width", "value": 1 },
+        { "kind": "min_value", "target": "$.size.height", "value": 1 },
+        { "kind": "min_value", "target": "$.size.depthOrArrayLayers", "value": 1 }
+      ]
+    }
+  }
+}
+

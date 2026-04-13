@@ -1,0 +1,3550 @@
+{
+  "interfaces": {
+    "GPUSupportedLimits": {
+      "methods": {}
+    },
+    "GPUSupportedFeatures": {
+      "methods": {}
+    },
+    "WGSLLanguageFeatures": {
+      "methods": {}
+    },
+    "GPUAdapterInfo": {
+      "methods": {}
+    },
+    "GPU": {
+      "methods": {
+        "requestAdapter": {
+          "args": [
+            {
+              "name": "options",
+              "type": "GPURequestAdapterOptions"
+            }
+          ]
+        },
+        "getPreferredCanvasFormat": {
+          "args": []
+        }
+      }
+    },
+    "GPUAdapter": {
+      "methods": {
+        "requestDevice": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUDeviceDescriptor"
+            }
+          ]
+        }
+      }
+    },
+    "GPUDevice": {
+      "methods": {
+        "destroy": {
+          "args": []
+        },
+        "createBuffer": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUBufferDescriptor"
+            }
+          ]
+        },
+        "createTexture": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUTextureDescriptor"
+            }
+          ]
+        },
+        "createSampler": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUSamplerDescriptor"
+            }
+          ]
+        },
+        "importExternalTexture": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUExternalTextureDescriptor"
+            }
+          ]
+        },
+        "createBindGroupLayout": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUBindGroupLayoutDescriptor"
+            }
+          ]
+        },
+        "createPipelineLayout": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUPipelineLayoutDescriptor"
+            }
+          ]
+        },
+        "createBindGroup": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUBindGroupDescriptor"
+            }
+          ]
+        },
+        "createShaderModule": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUShaderModuleDescriptor"
+            }
+          ]
+        },
+        "createComputePipeline": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUComputePipelineDescriptor"
+            }
+          ]
+        },
+        "createRenderPipeline": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPURenderPipelineDescriptor"
+            }
+          ]
+        },
+        "createComputePipelineAsync": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUComputePipelineDescriptor"
+            }
+          ]
+        },
+        "createRenderPipelineAsync": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPURenderPipelineDescriptor"
+            }
+          ]
+        },
+        "createCommandEncoder": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUCommandEncoderDescriptor"
+            }
+          ]
+        },
+        "createRenderBundleEncoder": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPURenderBundleEncoderDescriptor"
+            }
+          ]
+        },
+        "createQuerySet": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUQuerySetDescriptor"
+            }
+          ]
+        },
+        "pushErrorScope": {
+          "args": [
+            {
+              "name": "filter",
+              "type": "GPUErrorFilter"
+            }
+          ]
+        },
+        "popErrorScope": {
+          "args": []
+        }
+      }
+    },
+    "GPUBuffer": {
+      "methods": {
+        "mapAsync": {
+          "args": [
+            {
+              "name": "mode",
+              "type": "GPUMapModeFlags"
+            },
+            {
+              "name": "offset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "size",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        "getMappedRange": {
+          "args": [
+            {
+              "name": "offset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "size",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        "unmap": {
+          "args": []
+        },
+        "destroy": {
+          "args": []
+        }
+      }
+    },
+    "GPUTexture": {
+      "methods": {
+        "createView": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUTextureViewDescriptor"
+            }
+          ]
+        },
+        "destroy": {
+          "args": []
+        }
+      }
+    },
+    "GPUTextureView": {
+      "methods": {}
+    },
+    "GPUExternalTexture": {
+      "methods": {}
+    },
+    "GPUSampler": {
+      "methods": {}
+    },
+    "GPUBindGroupLayout": {
+      "methods": {}
+    },
+    "GPUBindGroup": {
+      "methods": {}
+    },
+    "GPUPipelineLayout": {
+      "methods": {}
+    },
+    "GPUShaderModule": {
+      "methods": {
+        "getCompilationInfo": {
+          "args": []
+        }
+      }
+    },
+    "GPUCompilationMessage": {
+      "methods": {}
+    },
+    "GPUCompilationInfo": {
+      "methods": {}
+    },
+    "GPUPipelineError": {
+      "methods": {}
+    },
+    "GPUComputePipeline": {
+      "methods": {
+        "getBindGroupLayout": {
+          "args": [
+            {
+              "name": "index",
+              "type": "index"
+            }
+          ]
+        }
+      }
+    },
+    "GPURenderPipeline": {
+      "methods": {
+        "getBindGroupLayout": {
+          "args": [
+            {
+              "name": "index",
+              "type": "index"
+            }
+          ]
+        }
+      }
+    },
+    "GPUCommandBuffer": {
+      "methods": {}
+    },
+    "GPUCommandEncoder": {
+      "methods": {
+        "beginRenderPass": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPURenderPassDescriptor"
+            }
+          ]
+        },
+        "beginComputePass": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUComputePassDescriptor"
+            }
+          ]
+        },
+        "copyBufferToBuffer": {
+          "args": [
+            {
+              "name": "source",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "sourceOffset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "destination",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "destinationOffset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "size",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        "copyBufferToTexture": {
+          "args": [
+            {
+              "name": "source",
+              "type": "GPUTexelCopyBufferInfo"
+            },
+            {
+              "name": "destination",
+              "type": "GPUTexelCopyTextureInfo"
+            },
+            {
+              "name": "copySize",
+              "type": "GPUExtent3D"
+            }
+          ]
+        },
+        "copyTextureToBuffer": {
+          "args": [
+            {
+              "name": "source",
+              "type": "GPUTexelCopyTextureInfo"
+            },
+            {
+              "name": "destination",
+              "type": "GPUTexelCopyBufferInfo"
+            },
+            {
+              "name": "copySize",
+              "type": "GPUExtent3D"
+            }
+          ]
+        },
+        "copyTextureToTexture": {
+          "args": [
+            {
+              "name": "source",
+              "type": "GPUTexelCopyTextureInfo"
+            },
+            {
+              "name": "destination",
+              "type": "GPUTexelCopyTextureInfo"
+            },
+            {
+              "name": "copySize",
+              "type": "GPUExtent3D"
+            }
+          ]
+        },
+        "clearBuffer": {
+          "args": [
+            {
+              "name": "buffer",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "offset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "size",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        "resolveQuerySet": {
+          "args": [
+            {
+              "name": "querySet",
+              "type": "GPUQuerySet"
+            },
+            {
+              "name": "firstQuery",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "queryCount",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "destination",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "destinationOffset",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        "finish": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPUCommandBufferDescriptor"
+            }
+          ]
+        },
+        "pushDebugGroup": {
+          "args": [
+            {
+              "name": "groupLabel",
+              "type": "groupLabel"
+            }
+          ]
+        },
+        "popDebugGroup": {
+          "args": []
+        },
+        "insertDebugMarker": {
+          "args": [
+            {
+              "name": "markerLabel",
+              "type": "markerLabel"
+            }
+          ]
+        }
+      }
+    },
+    "GPUComputePassEncoder": {
+      "methods": {
+        "setPipeline": {
+          "args": [
+            {
+              "name": "pipeline",
+              "type": "GPUComputePipeline"
+            }
+          ]
+        },
+        "dispatchWorkgroups": {
+          "args": [
+            {
+              "name": "workgroupCountX",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "workgroupCountY",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "workgroupCountZ",
+              "type": "GPUSize32"
+            }
+          ]
+        },
+        "dispatchWorkgroupsIndirect": {
+          "args": [
+            {
+              "name": "indirectBuffer",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "indirectOffset",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        "end": {
+          "args": []
+        },
+        "pushDebugGroup": {
+          "args": [
+            {
+              "name": "groupLabel",
+              "type": "groupLabel"
+            }
+          ]
+        },
+        "popDebugGroup": {
+          "args": []
+        },
+        "insertDebugMarker": {
+          "args": [
+            {
+              "name": "markerLabel",
+              "type": "markerLabel"
+            }
+          ]
+        },
+        "setBindGroup": {
+          "args": [
+            {
+              "name": "index",
+              "type": "index"
+            },
+            {
+              "name": "bindGroup",
+              "type": "bindGroup"
+            },
+            {
+              "name": "dynamicOffsets",
+              "type": "dynamicOffsets"
+            }
+          ]
+        }
+      }
+    },
+    "GPURenderPassEncoder": {
+      "methods": {
+        "setViewport": {
+          "args": [
+            {
+              "name": "x",
+              "type": "float"
+            },
+            {
+              "name": "y",
+              "type": "float"
+            },
+            {
+              "name": "width",
+              "type": "float"
+            },
+            {
+              "name": "height",
+              "type": "float"
+            },
+            {
+              "name": "minDepth",
+              "type": "float"
+            },
+            {
+              "name": "maxDepth",
+              "type": "float"
+            }
+          ]
+        },
+        "setScissorRect": {
+          "args": [
+            {
+              "name": "x",
+              "type": "GPUIntegerCoordinate"
+            },
+            {
+              "name": "y",
+              "type": "GPUIntegerCoordinate"
+            },
+            {
+              "name": "width",
+              "type": "GPUIntegerCoordinate"
+            },
+            {
+              "name": "height",
+              "type": "GPUIntegerCoordinate"
+            }
+          ]
+        },
+        "setBlendConstant": {
+          "args": [
+            {
+              "name": "color",
+              "type": "GPUColor"
+            }
+          ]
+        },
+        "setStencilReference": {
+          "args": [
+            {
+              "name": "reference",
+              "type": "GPUStencilValue"
+            }
+          ]
+        },
+        "beginOcclusionQuery": {
+          "args": [
+            {
+              "name": "queryIndex",
+              "type": "GPUSize32"
+            }
+          ]
+        },
+        "endOcclusionQuery": {
+          "args": []
+        },
+        "executeBundles": {
+          "args": [
+            {
+              "name": "bundles",
+              "type": "GPURenderBundle"
+            }
+          ]
+        },
+        "end": {
+          "args": []
+        },
+        "pushDebugGroup": {
+          "args": [
+            {
+              "name": "groupLabel",
+              "type": "groupLabel"
+            }
+          ]
+        },
+        "popDebugGroup": {
+          "args": []
+        },
+        "insertDebugMarker": {
+          "args": [
+            {
+              "name": "markerLabel",
+              "type": "markerLabel"
+            }
+          ]
+        },
+        "setBindGroup": {
+          "args": [
+            {
+              "name": "index",
+              "type": "index"
+            },
+            {
+              "name": "bindGroup",
+              "type": "bindGroup"
+            },
+            {
+              "name": "dynamicOffsets",
+              "type": "dynamicOffsets"
+            }
+          ]
+        },
+        "setPipeline": {
+          "args": [
+            {
+              "name": "pipeline",
+              "type": "pipeline"
+            }
+          ]
+        },
+        "setIndexBuffer": {
+          "args": [
+            {
+              "name": "buffer",
+              "type": "buffer"
+            },
+            {
+              "name": "indexFormat",
+              "type": "indexFormat"
+            },
+            {
+              "name": "offset",
+              "type": "offset"
+            },
+            {
+              "name": "size",
+              "type": "size"
+            }
+          ]
+        },
+        "setVertexBuffer": {
+          "args": [
+            {
+              "name": "slot",
+              "type": "slot"
+            },
+            {
+              "name": "buffer",
+              "type": "buffer"
+            },
+            {
+              "name": "offset",
+              "type": "offset"
+            },
+            {
+              "name": "size",
+              "type": "size"
+            }
+          ]
+        },
+        "draw": {
+          "args": [
+            {
+              "name": "vertexCount",
+              "type": "vertexCount"
+            },
+            {
+              "name": "instanceCount",
+              "type": "instanceCount"
+            },
+            {
+              "name": "firstVertex",
+              "type": "firstVertex"
+            },
+            {
+              "name": "firstInstance",
+              "type": "firstInstance"
+            }
+          ]
+        },
+        "drawIndexed": {
+          "args": [
+            {
+              "name": "indexCount",
+              "type": "indexCount"
+            },
+            {
+              "name": "instanceCount",
+              "type": "instanceCount"
+            },
+            {
+              "name": "firstIndex",
+              "type": "firstIndex"
+            },
+            {
+              "name": "baseVertex",
+              "type": "baseVertex"
+            },
+            {
+              "name": "firstInstance",
+              "type": "firstInstance"
+            }
+          ]
+        },
+        "drawIndirect": {
+          "args": [
+            {
+              "name": "indirectBuffer",
+              "type": "indirectBuffer"
+            },
+            {
+              "name": "indirectOffset",
+              "type": "indirectOffset"
+            }
+          ]
+        },
+        "drawIndexedIndirect": {
+          "args": [
+            {
+              "name": "indirectBuffer",
+              "type": "indirectBuffer"
+            },
+            {
+              "name": "indirectOffset",
+              "type": "indirectOffset"
+            }
+          ]
+        }
+      }
+    },
+    "GPURenderBundle": {
+      "methods": {}
+    },
+    "GPURenderBundleEncoder": {
+      "methods": {
+        "finish": {
+          "args": [
+            {
+              "name": "descriptor",
+              "type": "GPURenderBundleDescriptor"
+            }
+          ]
+        },
+        "pushDebugGroup": {
+          "args": [
+            {
+              "name": "groupLabel",
+              "type": "groupLabel"
+            }
+          ]
+        },
+        "popDebugGroup": {
+          "args": []
+        },
+        "insertDebugMarker": {
+          "args": [
+            {
+              "name": "markerLabel",
+              "type": "markerLabel"
+            }
+          ]
+        },
+        "setBindGroup": {
+          "args": [
+            {
+              "name": "index",
+              "type": "index"
+            },
+            {
+              "name": "bindGroup",
+              "type": "bindGroup"
+            },
+            {
+              "name": "dynamicOffsets",
+              "type": "dynamicOffsets"
+            }
+          ]
+        },
+        "setPipeline": {
+          "args": [
+            {
+              "name": "pipeline",
+              "type": "pipeline"
+            }
+          ]
+        },
+        "setIndexBuffer": {
+          "args": [
+            {
+              "name": "buffer",
+              "type": "buffer"
+            },
+            {
+              "name": "indexFormat",
+              "type": "indexFormat"
+            },
+            {
+              "name": "offset",
+              "type": "offset"
+            },
+            {
+              "name": "size",
+              "type": "size"
+            }
+          ]
+        },
+        "setVertexBuffer": {
+          "args": [
+            {
+              "name": "slot",
+              "type": "slot"
+            },
+            {
+              "name": "buffer",
+              "type": "buffer"
+            },
+            {
+              "name": "offset",
+              "type": "offset"
+            },
+            {
+              "name": "size",
+              "type": "size"
+            }
+          ]
+        },
+        "draw": {
+          "args": [
+            {
+              "name": "vertexCount",
+              "type": "vertexCount"
+            },
+            {
+              "name": "instanceCount",
+              "type": "instanceCount"
+            },
+            {
+              "name": "firstVertex",
+              "type": "firstVertex"
+            },
+            {
+              "name": "firstInstance",
+              "type": "firstInstance"
+            }
+          ]
+        },
+        "drawIndexed": {
+          "args": [
+            {
+              "name": "indexCount",
+              "type": "indexCount"
+            },
+            {
+              "name": "instanceCount",
+              "type": "instanceCount"
+            },
+            {
+              "name": "firstIndex",
+              "type": "firstIndex"
+            },
+            {
+              "name": "baseVertex",
+              "type": "baseVertex"
+            },
+            {
+              "name": "firstInstance",
+              "type": "firstInstance"
+            }
+          ]
+        },
+        "drawIndirect": {
+          "args": [
+            {
+              "name": "indirectBuffer",
+              "type": "indirectBuffer"
+            },
+            {
+              "name": "indirectOffset",
+              "type": "indirectOffset"
+            }
+          ]
+        },
+        "drawIndexedIndirect": {
+          "args": [
+            {
+              "name": "indirectBuffer",
+              "type": "indirectBuffer"
+            },
+            {
+              "name": "indirectOffset",
+              "type": "indirectOffset"
+            }
+          ]
+        }
+      }
+    },
+    "GPUQueue": {
+      "methods": {
+        "submit": {
+          "args": [
+            {
+              "name": "commandBuffers",
+              "type": "GPUCommandBuffer"
+            }
+          ]
+        },
+        "onSubmittedWorkDone": {
+          "args": []
+        },
+        "writeBuffer": {
+          "args": [
+            {
+              "name": "buffer",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "bufferOffset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "data",
+              "type": "AllowSharedBufferSource"
+            },
+            {
+              "name": "dataOffset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "size",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        "writeTexture": {
+          "args": [
+            {
+              "name": "destination",
+              "type": "GPUTexelCopyTextureInfo"
+            },
+            {
+              "name": "data",
+              "type": "AllowSharedBufferSource"
+            },
+            {
+              "name": "dataLayout",
+              "type": "GPUTexelCopyBufferLayout"
+            },
+            {
+              "name": "size",
+              "type": "GPUExtent3D"
+            }
+          ]
+        },
+        "copyExternalImageToTexture": {
+          "args": [
+            {
+              "name": "source",
+              "type": "GPUCopyExternalImageSourceInfo"
+            },
+            {
+              "name": "destination",
+              "type": "GPUCopyExternalImageDestInfo"
+            },
+            {
+              "name": "copySize",
+              "type": "GPUExtent3D"
+            }
+          ]
+        }
+      }
+    },
+    "GPUQuerySet": {
+      "methods": {
+        "destroy": {
+          "args": []
+        }
+      }
+    },
+    "GPUCanvasContext": {
+      "methods": {
+        "configure": {
+          "args": [
+            {
+              "name": "configuration",
+              "type": "GPUCanvasConfiguration"
+            }
+          ]
+        },
+        "unconfigure": {
+          "args": []
+        },
+        "getConfiguration": {
+          "args": []
+        },
+        "getCurrentTexture": {
+          "args": []
+        }
+      }
+    },
+    "GPUDeviceLostInfo": {
+      "methods": {}
+    },
+    "GPUError": {
+      "methods": {}
+    },
+    "GPUValidationError": {
+      "methods": {}
+    },
+    "GPUOutOfMemoryError": {
+      "methods": {}
+    },
+    "GPUInternalError": {
+      "methods": {}
+    },
+    "GPUUncapturedErrorEvent": {
+      "methods": {}
+    },
+    "Navigator": {
+      "methods": {}
+    },
+    "WorkerNavigator": {
+      "methods": {}
+    }
+  },
+  "dictionaries": {
+    "GPUObjectDescriptorBase": {
+      "label": {
+        "type": "USVString",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": ""
+        }
+      }
+    },
+    "GPURequestAdapterOptions": {
+      "featureLevel": {
+        "type": "DOMString",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "core"
+        }
+      },
+      "powerPreference": {
+        "type": "GPUPowerPreference",
+        "required": false,
+        "default": null
+      },
+      "forceFallbackAdapter": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      },
+      "xrCompatible": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      }
+    },
+    "GPUDeviceDescriptor": {
+      "requiredFeatures": {
+        "type": "GPUFeatureName",
+        "required": false,
+        "default": {
+          "type": "sequence",
+          "value": []
+        }
+      },
+      "requiredLimits": {
+        "type": "DOMString GPUSize64 undefined",
+        "required": false,
+        "default": {
+          "type": "dictionary",
+          "value": {}
+        }
+      },
+      "defaultQueue": {
+        "type": "GPUQueueDescriptor",
+        "required": false,
+        "default": {
+          "type": "dictionary",
+          "value": {}
+        }
+      }
+    },
+    "GPUBufferDescriptor": {
+      "size": {
+        "type": "GPUSize64",
+        "required": true,
+        "default": null
+      },
+      "usage": {
+        "type": "GPUBufferUsageFlags",
+        "required": true,
+        "default": null
+      },
+      "mappedAtCreation": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      }
+    },
+    "GPUTextureDescriptor": {
+      "size": {
+        "type": "GPUExtent3D",
+        "required": true,
+        "default": null
+      },
+      "mipLevelCount": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "1"
+        }
+      },
+      "sampleCount": {
+        "type": "GPUSize32",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "1"
+        }
+      },
+      "dimension": {
+        "type": "GPUTextureDimension",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "2d"
+        }
+      },
+      "format": {
+        "type": "GPUTextureFormat",
+        "required": true,
+        "default": null
+      },
+      "usage": {
+        "type": "GPUTextureUsageFlags",
+        "required": true,
+        "default": null
+      },
+      "viewFormats": {
+        "type": "GPUTextureFormat",
+        "required": false,
+        "default": {
+          "type": "sequence",
+          "value": []
+        }
+      }
+    },
+    "GPUTextureViewDescriptor": {
+      "format": {
+        "type": "GPUTextureFormat",
+        "required": false,
+        "default": null
+      },
+      "dimension": {
+        "type": "GPUTextureViewDimension",
+        "required": false,
+        "default": null
+      },
+      "usage": {
+        "type": "GPUTextureUsageFlags",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "aspect": {
+        "type": "GPUTextureAspect",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "all"
+        }
+      },
+      "baseMipLevel": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "mipLevelCount": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": null
+      },
+      "baseArrayLayer": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "arrayLayerCount": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": null
+      }
+    },
+    "GPUExternalTextureDescriptor": {
+      "source": {
+        "type": "HTMLVideoElement VideoFrame",
+        "required": true,
+        "default": null
+      },
+      "colorSpace": {
+        "type": "PredefinedColorSpace",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "srgb"
+        }
+      }
+    },
+    "GPUSamplerDescriptor": {
+      "addressModeU": {
+        "type": "GPUAddressMode",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "clamp-to-edge"
+        }
+      },
+      "addressModeV": {
+        "type": "GPUAddressMode",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "clamp-to-edge"
+        }
+      },
+      "addressModeW": {
+        "type": "GPUAddressMode",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "clamp-to-edge"
+        }
+      },
+      "magFilter": {
+        "type": "GPUFilterMode",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "nearest"
+        }
+      },
+      "minFilter": {
+        "type": "GPUFilterMode",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "nearest"
+        }
+      },
+      "mipmapFilter": {
+        "type": "GPUMipmapFilterMode",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "nearest"
+        }
+      },
+      "lodMinClamp": {
+        "type": "float",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "lodMaxClamp": {
+        "type": "float",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "32"
+        }
+      },
+      "compare": {
+        "type": "GPUCompareFunction",
+        "required": false,
+        "default": null
+      },
+      "maxAnisotropy": {
+        "type": "unsigned short",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "1"
+        }
+      }
+    },
+    "GPUBindGroupLayoutDescriptor": {
+      "entries": {
+        "type": "GPUBindGroupLayoutEntry",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUBindGroupLayoutEntry": {
+      "binding": {
+        "type": "GPUIndex32",
+        "required": true,
+        "default": null
+      },
+      "visibility": {
+        "type": "GPUShaderStageFlags",
+        "required": true,
+        "default": null
+      },
+      "buffer": {
+        "type": "GPUBufferBindingLayout",
+        "required": false,
+        "default": null
+      },
+      "sampler": {
+        "type": "GPUSamplerBindingLayout",
+        "required": false,
+        "default": null
+      },
+      "texture": {
+        "type": "GPUTextureBindingLayout",
+        "required": false,
+        "default": null
+      },
+      "storageTexture": {
+        "type": "GPUStorageTextureBindingLayout",
+        "required": false,
+        "default": null
+      },
+      "externalTexture": {
+        "type": "GPUExternalTextureBindingLayout",
+        "required": false,
+        "default": null
+      }
+    },
+    "GPUBufferBindingLayout": {
+      "type": {
+        "type": "GPUBufferBindingType",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "uniform"
+        }
+      },
+      "hasDynamicOffset": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      },
+      "minBindingSize": {
+        "type": "GPUSize64",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      }
+    },
+    "GPUSamplerBindingLayout": {
+      "type": {
+        "type": "GPUSamplerBindingType",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "filtering"
+        }
+      }
+    },
+    "GPUTextureBindingLayout": {
+      "sampleType": {
+        "type": "GPUTextureSampleType",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "float"
+        }
+      },
+      "viewDimension": {
+        "type": "GPUTextureViewDimension",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "2d"
+        }
+      },
+      "multisampled": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      }
+    },
+    "GPUStorageTextureBindingLayout": {
+      "access": {
+        "type": "GPUStorageTextureAccess",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "write-only"
+        }
+      },
+      "format": {
+        "type": "GPUTextureFormat",
+        "required": true,
+        "default": null
+      },
+      "viewDimension": {
+        "type": "GPUTextureViewDimension",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "2d"
+        }
+      }
+    },
+    "GPUExternalTextureBindingLayout": {},
+    "GPUBindGroupDescriptor": {
+      "layout": {
+        "type": "GPUBindGroupLayout",
+        "required": true,
+        "default": null
+      },
+      "entries": {
+        "type": "GPUBindGroupEntry",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUBindGroupEntry": {
+      "binding": {
+        "type": "GPUIndex32",
+        "required": true,
+        "default": null
+      },
+      "resource": {
+        "type": "GPUBindingResource",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUBufferBinding": {
+      "buffer": {
+        "type": "GPUBuffer",
+        "required": true,
+        "default": null
+      },
+      "offset": {
+        "type": "GPUSize64",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "size": {
+        "type": "GPUSize64",
+        "required": false,
+        "default": null
+      }
+    },
+    "GPUPipelineLayoutDescriptor": {
+      "bindGroupLayouts": {
+        "type": "GPUBindGroupLayout",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUShaderModuleDescriptor": {
+      "code": {
+        "type": "USVString",
+        "required": true,
+        "default": null
+      },
+      "compilationHints": {
+        "type": "GPUShaderModuleCompilationHint",
+        "required": false,
+        "default": {
+          "type": "sequence",
+          "value": []
+        }
+      }
+    },
+    "GPUShaderModuleCompilationHint": {
+      "entryPoint": {
+        "type": "USVString",
+        "required": true,
+        "default": null
+      },
+      "layout": {
+        "type": "GPUPipelineLayout GPUAutoLayoutMode",
+        "required": false,
+        "default": null
+      }
+    },
+    "GPUPipelineErrorInit": {
+      "reason": {
+        "type": "GPUPipelineErrorReason",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUPipelineDescriptorBase": {
+      "layout": {
+        "type": "GPUPipelineLayout GPUAutoLayoutMode",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUProgrammableStage": {
+      "module": {
+        "type": "GPUShaderModule",
+        "required": true,
+        "default": null
+      },
+      "entryPoint": {
+        "type": "USVString",
+        "required": false,
+        "default": null
+      },
+      "constants": {
+        "type": "USVString GPUPipelineConstantValue",
+        "required": false,
+        "default": {
+          "type": "dictionary",
+          "value": {}
+        }
+      }
+    },
+    "GPUComputePipelineDescriptor": {
+      "compute": {
+        "type": "GPUProgrammableStage",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPURenderPipelineDescriptor": {
+      "vertex": {
+        "type": "GPUVertexState",
+        "required": true,
+        "default": null
+      },
+      "primitive": {
+        "type": "GPUPrimitiveState",
+        "required": false,
+        "default": {
+          "type": "dictionary",
+          "value": {}
+        }
+      },
+      "depthStencil": {
+        "type": "GPUDepthStencilState",
+        "required": false,
+        "default": null
+      },
+      "multisample": {
+        "type": "GPUMultisampleState",
+        "required": false,
+        "default": {
+          "type": "dictionary",
+          "value": {}
+        }
+      },
+      "fragment": {
+        "type": "GPUFragmentState",
+        "required": false,
+        "default": null
+      }
+    },
+    "GPUPrimitiveState": {
+      "topology": {
+        "type": "GPUPrimitiveTopology",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "triangle-list"
+        }
+      },
+      "stripIndexFormat": {
+        "type": "GPUIndexFormat",
+        "required": false,
+        "default": null
+      },
+      "frontFace": {
+        "type": "GPUFrontFace",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "ccw"
+        }
+      },
+      "cullMode": {
+        "type": "GPUCullMode",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "none"
+        }
+      },
+      "unclippedDepth": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      }
+    },
+    "GPUMultisampleState": {
+      "count": {
+        "type": "GPUSize32",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "1"
+        }
+      },
+      "mask": {
+        "type": "GPUSampleMask",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0xFFFFFFFF"
+        }
+      },
+      "alphaToCoverageEnabled": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      }
+    },
+    "GPUFragmentState": {
+      "targets": {
+        "type": "GPUColorTargetState",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUColorTargetState": {
+      "format": {
+        "type": "GPUTextureFormat",
+        "required": true,
+        "default": null
+      },
+      "blend": {
+        "type": "GPUBlendState",
+        "required": false,
+        "default": null
+      },
+      "writeMask": {
+        "type": "GPUColorWriteFlags",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0xF"
+        }
+      }
+    },
+    "GPUBlendState": {
+      "color": {
+        "type": "GPUBlendComponent",
+        "required": true,
+        "default": null
+      },
+      "alpha": {
+        "type": "GPUBlendComponent",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUBlendComponent": {
+      "operation": {
+        "type": "GPUBlendOperation",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "add"
+        }
+      },
+      "srcFactor": {
+        "type": "GPUBlendFactor",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "one"
+        }
+      },
+      "dstFactor": {
+        "type": "GPUBlendFactor",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "zero"
+        }
+      }
+    },
+    "GPUDepthStencilState": {
+      "format": {
+        "type": "GPUTextureFormat",
+        "required": true,
+        "default": null
+      },
+      "depthWriteEnabled": {
+        "type": "boolean",
+        "required": false,
+        "default": null
+      },
+      "depthCompare": {
+        "type": "GPUCompareFunction",
+        "required": false,
+        "default": null
+      },
+      "stencilFront": {
+        "type": "GPUStencilFaceState",
+        "required": false,
+        "default": {
+          "type": "dictionary",
+          "value": {}
+        }
+      },
+      "stencilBack": {
+        "type": "GPUStencilFaceState",
+        "required": false,
+        "default": {
+          "type": "dictionary",
+          "value": {}
+        }
+      },
+      "stencilReadMask": {
+        "type": "GPUStencilValue",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0xFFFFFFFF"
+        }
+      },
+      "stencilWriteMask": {
+        "type": "GPUStencilValue",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0xFFFFFFFF"
+        }
+      },
+      "depthBias": {
+        "type": "GPUDepthBias",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "depthBiasSlopeScale": {
+        "type": "float",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "depthBiasClamp": {
+        "type": "float",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      }
+    },
+    "GPUStencilFaceState": {
+      "compare": {
+        "type": "GPUCompareFunction",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "always"
+        }
+      },
+      "failOp": {
+        "type": "GPUStencilOperation",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "keep"
+        }
+      },
+      "depthFailOp": {
+        "type": "GPUStencilOperation",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "keep"
+        }
+      },
+      "passOp": {
+        "type": "GPUStencilOperation",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "keep"
+        }
+      }
+    },
+    "GPUVertexState": {
+      "buffers": {
+        "type": "GPUVertexBufferLayout",
+        "required": false,
+        "default": {
+          "type": "sequence",
+          "value": []
+        }
+      }
+    },
+    "GPUVertexBufferLayout": {
+      "arrayStride": {
+        "type": "GPUSize64",
+        "required": true,
+        "default": null
+      },
+      "stepMode": {
+        "type": "GPUVertexStepMode",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "vertex"
+        }
+      },
+      "attributes": {
+        "type": "GPUVertexAttribute",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUVertexAttribute": {
+      "format": {
+        "type": "GPUVertexFormat",
+        "required": true,
+        "default": null
+      },
+      "offset": {
+        "type": "GPUSize64",
+        "required": true,
+        "default": null
+      },
+      "shaderLocation": {
+        "type": "GPUIndex32",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUTexelCopyBufferLayout": {
+      "offset": {
+        "type": "GPUSize64",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "bytesPerRow": {
+        "type": "GPUSize32",
+        "required": false,
+        "default": null
+      },
+      "rowsPerImage": {
+        "type": "GPUSize32",
+        "required": false,
+        "default": null
+      }
+    },
+    "GPUTexelCopyBufferInfo": {
+      "buffer": {
+        "type": "GPUBuffer",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUTexelCopyTextureInfo": {
+      "texture": {
+        "type": "GPUTexture",
+        "required": true,
+        "default": null
+      },
+      "mipLevel": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "origin": {
+        "type": "GPUOrigin3D",
+        "required": false,
+        "default": {
+          "type": "dictionary",
+          "value": {}
+        }
+      },
+      "aspect": {
+        "type": "GPUTextureAspect",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "all"
+        }
+      }
+    },
+    "GPUCopyExternalImageDestInfo": {
+      "colorSpace": {
+        "type": "PredefinedColorSpace",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "srgb"
+        }
+      },
+      "premultipliedAlpha": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      }
+    },
+    "GPUCopyExternalImageSourceInfo": {
+      "source": {
+        "type": "GPUCopyExternalImageSource",
+        "required": true,
+        "default": null
+      },
+      "origin": {
+        "type": "GPUOrigin2D",
+        "required": false,
+        "default": {
+          "type": "dictionary",
+          "value": {}
+        }
+      },
+      "flipY": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      }
+    },
+    "GPUCommandBufferDescriptor": {},
+    "GPUCommandEncoderDescriptor": {},
+    "GPUComputePassTimestampWrites": {
+      "querySet": {
+        "type": "GPUQuerySet",
+        "required": true,
+        "default": null
+      },
+      "beginningOfPassWriteIndex": {
+        "type": "GPUSize32",
+        "required": false,
+        "default": null
+      },
+      "endOfPassWriteIndex": {
+        "type": "GPUSize32",
+        "required": false,
+        "default": null
+      }
+    },
+    "GPUComputePassDescriptor": {
+      "timestampWrites": {
+        "type": "GPUComputePassTimestampWrites",
+        "required": false,
+        "default": null
+      }
+    },
+    "GPURenderPassTimestampWrites": {
+      "querySet": {
+        "type": "GPUQuerySet",
+        "required": true,
+        "default": null
+      },
+      "beginningOfPassWriteIndex": {
+        "type": "GPUSize32",
+        "required": false,
+        "default": null
+      },
+      "endOfPassWriteIndex": {
+        "type": "GPUSize32",
+        "required": false,
+        "default": null
+      }
+    },
+    "GPURenderPassDescriptor": {
+      "colorAttachments": {
+        "type": "GPURenderPassColorAttachment",
+        "required": true,
+        "default": null
+      },
+      "depthStencilAttachment": {
+        "type": "GPURenderPassDepthStencilAttachment",
+        "required": false,
+        "default": null
+      },
+      "occlusionQuerySet": {
+        "type": "GPUQuerySet",
+        "required": false,
+        "default": null
+      },
+      "timestampWrites": {
+        "type": "GPURenderPassTimestampWrites",
+        "required": false,
+        "default": null
+      },
+      "maxDrawCount": {
+        "type": "GPUSize64",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "50000000"
+        }
+      }
+    },
+    "GPURenderPassColorAttachment": {
+      "view": {
+        "type": "GPUTexture GPUTextureView",
+        "required": true,
+        "default": null
+      },
+      "depthSlice": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": null
+      },
+      "resolveTarget": {
+        "type": "GPUTexture GPUTextureView",
+        "required": false,
+        "default": null
+      },
+      "clearValue": {
+        "type": "GPUColor",
+        "required": false,
+        "default": null
+      },
+      "loadOp": {
+        "type": "GPULoadOp",
+        "required": true,
+        "default": null
+      },
+      "storeOp": {
+        "type": "GPUStoreOp",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPURenderPassDepthStencilAttachment": {
+      "view": {
+        "type": "GPUTexture GPUTextureView",
+        "required": true,
+        "default": null
+      },
+      "depthClearValue": {
+        "type": "float",
+        "required": false,
+        "default": null
+      },
+      "depthLoadOp": {
+        "type": "GPULoadOp",
+        "required": false,
+        "default": null
+      },
+      "depthStoreOp": {
+        "type": "GPUStoreOp",
+        "required": false,
+        "default": null
+      },
+      "depthReadOnly": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      },
+      "stencilClearValue": {
+        "type": "GPUStencilValue",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "stencilLoadOp": {
+        "type": "GPULoadOp",
+        "required": false,
+        "default": null
+      },
+      "stencilStoreOp": {
+        "type": "GPUStoreOp",
+        "required": false,
+        "default": null
+      },
+      "stencilReadOnly": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      }
+    },
+    "GPURenderPassLayout": {
+      "colorFormats": {
+        "type": "GPUTextureFormat",
+        "required": true,
+        "default": null
+      },
+      "depthStencilFormat": {
+        "type": "GPUTextureFormat",
+        "required": false,
+        "default": null
+      },
+      "sampleCount": {
+        "type": "GPUSize32",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "1"
+        }
+      }
+    },
+    "GPURenderBundleDescriptor": {},
+    "GPURenderBundleEncoderDescriptor": {
+      "depthReadOnly": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      },
+      "stencilReadOnly": {
+        "type": "boolean",
+        "required": false,
+        "default": {
+          "type": "boolean",
+          "value": false
+        }
+      }
+    },
+    "GPUQueueDescriptor": {},
+    "GPUQuerySetDescriptor": {
+      "type": {
+        "type": "GPUQueryType",
+        "required": true,
+        "default": null
+      },
+      "count": {
+        "type": "GPUSize32",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUCanvasToneMapping": {
+      "mode": {
+        "type": "GPUCanvasToneMappingMode",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "standard"
+        }
+      }
+    },
+    "GPUCanvasConfiguration": {
+      "device": {
+        "type": "GPUDevice",
+        "required": true,
+        "default": null
+      },
+      "format": {
+        "type": "GPUTextureFormat",
+        "required": true,
+        "default": null
+      },
+      "usage": {
+        "type": "GPUTextureUsageFlags",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0x10"
+        }
+      },
+      "viewFormats": {
+        "type": "GPUTextureFormat",
+        "required": false,
+        "default": {
+          "type": "sequence",
+          "value": []
+        }
+      },
+      "colorSpace": {
+        "type": "PredefinedColorSpace",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "srgb"
+        }
+      },
+      "toneMapping": {
+        "type": "GPUCanvasToneMapping",
+        "required": false,
+        "default": {
+          "type": "dictionary",
+          "value": {}
+        }
+      },
+      "alphaMode": {
+        "type": "GPUCanvasAlphaMode",
+        "required": false,
+        "default": {
+          "type": "string",
+          "value": "opaque"
+        }
+      }
+    },
+    "GPUUncapturedErrorEventInit": {
+      "error": {
+        "type": "GPUError",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUColorDict": {
+      "r": {
+        "type": "double",
+        "required": true,
+        "default": null
+      },
+      "g": {
+        "type": "double",
+        "required": true,
+        "default": null
+      },
+      "b": {
+        "type": "double",
+        "required": true,
+        "default": null
+      },
+      "a": {
+        "type": "double",
+        "required": true,
+        "default": null
+      }
+    },
+    "GPUOrigin2DDict": {
+      "x": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "y": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      }
+    },
+    "GPUOrigin3DDict": {
+      "x": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "y": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      },
+      "z": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "0"
+        }
+      }
+    },
+    "GPUExtent3DDict": {
+      "width": {
+        "type": "GPUIntegerCoordinate",
+        "required": true,
+        "default": null
+      },
+      "height": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "1"
+        }
+      },
+      "depthOrArrayLayers": {
+        "type": "GPUIntegerCoordinate",
+        "required": false,
+        "default": {
+          "type": "number",
+          "value": "1"
+        }
+      }
+    }
+  },
+  "enums": {
+    "GPUPowerPreference": [
+      "low-power",
+      "high-performance"
+    ],
+    "GPUFeatureName": [
+      "core-features-and-limits",
+      "depth-clip-control",
+      "depth32float-stencil8",
+      "texture-compression-bc",
+      "texture-compression-bc-sliced-3d",
+      "texture-compression-etc2",
+      "texture-compression-astc",
+      "texture-compression-astc-sliced-3d",
+      "timestamp-query",
+      "indirect-first-instance",
+      "shader-f16",
+      "rg11b10ufloat-renderable",
+      "bgra8unorm-storage",
+      "float32-filterable",
+      "float32-blendable",
+      "clip-distances",
+      "dual-source-blending",
+      "subgroups",
+      "texture-formats-tier1",
+      "texture-formats-tier2"
+    ],
+    "GPUBufferMapState": [
+      "unmapped",
+      "pending",
+      "mapped"
+    ],
+    "GPUTextureDimension": [
+      "1d",
+      "2d",
+      "3d"
+    ],
+    "GPUTextureViewDimension": [
+      "1d",
+      "2d",
+      "2d-array",
+      "cube",
+      "cube-array",
+      "3d"
+    ],
+    "GPUTextureAspect": [
+      "all",
+      "stencil-only",
+      "depth-only"
+    ],
+    "GPUTextureFormat": [
+      "r8unorm",
+      "r8snorm",
+      "r8uint",
+      "r8sint",
+      "r16unorm",
+      "r16snorm",
+      "r16uint",
+      "r16sint",
+      "r16float",
+      "rg8unorm",
+      "rg8snorm",
+      "rg8uint",
+      "rg8sint",
+      "r32uint",
+      "r32sint",
+      "r32float",
+      "rg16unorm",
+      "rg16snorm",
+      "rg16uint",
+      "rg16sint",
+      "rg16float",
+      "rgba8unorm",
+      "rgba8unorm-srgb",
+      "rgba8snorm",
+      "rgba8uint",
+      "rgba8sint",
+      "bgra8unorm",
+      "bgra8unorm-srgb",
+      "rgb9e5ufloat",
+      "rgb10a2uint",
+      "rgb10a2unorm",
+      "rg11b10ufloat",
+      "rg32uint",
+      "rg32sint",
+      "rg32float",
+      "rgba16unorm",
+      "rgba16snorm",
+      "rgba16uint",
+      "rgba16sint",
+      "rgba16float",
+      "rgba32uint",
+      "rgba32sint",
+      "rgba32float",
+      "stencil8",
+      "depth16unorm",
+      "depth24plus",
+      "depth24plus-stencil8",
+      "depth32float",
+      "depth32float-stencil8",
+      "bc1-rgba-unorm",
+      "bc1-rgba-unorm-srgb",
+      "bc2-rgba-unorm",
+      "bc2-rgba-unorm-srgb",
+      "bc3-rgba-unorm",
+      "bc3-rgba-unorm-srgb",
+      "bc4-r-unorm",
+      "bc4-r-snorm",
+      "bc5-rg-unorm",
+      "bc5-rg-snorm",
+      "bc6h-rgb-ufloat",
+      "bc6h-rgb-float",
+      "bc7-rgba-unorm",
+      "bc7-rgba-unorm-srgb",
+      "etc2-rgb8unorm",
+      "etc2-rgb8unorm-srgb",
+      "etc2-rgb8a1unorm",
+      "etc2-rgb8a1unorm-srgb",
+      "etc2-rgba8unorm",
+      "etc2-rgba8unorm-srgb",
+      "eac-r11unorm",
+      "eac-r11snorm",
+      "eac-rg11unorm",
+      "eac-rg11snorm",
+      "astc-4x4-unorm",
+      "astc-4x4-unorm-srgb",
+      "astc-5x4-unorm",
+      "astc-5x4-unorm-srgb",
+      "astc-5x5-unorm",
+      "astc-5x5-unorm-srgb",
+      "astc-6x5-unorm",
+      "astc-6x5-unorm-srgb",
+      "astc-6x6-unorm",
+      "astc-6x6-unorm-srgb",
+      "astc-8x5-unorm",
+      "astc-8x5-unorm-srgb",
+      "astc-8x6-unorm",
+      "astc-8x6-unorm-srgb",
+      "astc-8x8-unorm",
+      "astc-8x8-unorm-srgb",
+      "astc-10x5-unorm",
+      "astc-10x5-unorm-srgb",
+      "astc-10x6-unorm",
+      "astc-10x6-unorm-srgb",
+      "astc-10x8-unorm",
+      "astc-10x8-unorm-srgb",
+      "astc-10x10-unorm",
+      "astc-10x10-unorm-srgb",
+      "astc-12x10-unorm",
+      "astc-12x10-unorm-srgb",
+      "astc-12x12-unorm",
+      "astc-12x12-unorm-srgb"
+    ],
+    "GPUAddressMode": [
+      "clamp-to-edge",
+      "repeat",
+      "mirror-repeat"
+    ],
+    "GPUFilterMode": [
+      "nearest",
+      "linear"
+    ],
+    "GPUMipmapFilterMode": [
+      "nearest",
+      "linear"
+    ],
+    "GPUCompareFunction": [
+      "never",
+      "less",
+      "equal",
+      "less-equal",
+      "greater",
+      "not-equal",
+      "greater-equal",
+      "always"
+    ],
+    "GPUBufferBindingType": [
+      "uniform",
+      "storage",
+      "read-only-storage"
+    ],
+    "GPUSamplerBindingType": [
+      "filtering",
+      "non-filtering",
+      "comparison"
+    ],
+    "GPUTextureSampleType": [
+      "float",
+      "unfilterable-float",
+      "depth",
+      "sint",
+      "uint"
+    ],
+    "GPUStorageTextureAccess": [
+      "write-only",
+      "read-only",
+      "read-write"
+    ],
+    "GPUCompilationMessageType": [
+      "error",
+      "warning",
+      "info"
+    ],
+    "GPUPipelineErrorReason": [
+      "validation",
+      "internal"
+    ],
+    "GPUAutoLayoutMode": [
+      "auto"
+    ],
+    "GPUPrimitiveTopology": [
+      "point-list",
+      "line-list",
+      "line-strip",
+      "triangle-list",
+      "triangle-strip"
+    ],
+    "GPUFrontFace": [
+      "ccw",
+      "cw"
+    ],
+    "GPUCullMode": [
+      "none",
+      "front",
+      "back"
+    ],
+    "GPUBlendFactor": [
+      "zero",
+      "one",
+      "src",
+      "one-minus-src",
+      "src-alpha",
+      "one-minus-src-alpha",
+      "dst",
+      "one-minus-dst",
+      "dst-alpha",
+      "one-minus-dst-alpha",
+      "src-alpha-saturated",
+      "constant",
+      "one-minus-constant",
+      "src1",
+      "one-minus-src1",
+      "src1-alpha",
+      "one-minus-src1-alpha"
+    ],
+    "GPUBlendOperation": [
+      "add",
+      "subtract",
+      "reverse-subtract",
+      "min",
+      "max"
+    ],
+    "GPUStencilOperation": [
+      "keep",
+      "zero",
+      "replace",
+      "invert",
+      "increment-clamp",
+      "decrement-clamp",
+      "increment-wrap",
+      "decrement-wrap"
+    ],
+    "GPUIndexFormat": [
+      "uint16",
+      "uint32"
+    ],
+    "GPUVertexFormat": [
+      "uint8",
+      "uint8x2",
+      "uint8x4",
+      "sint8",
+      "sint8x2",
+      "sint8x4",
+      "unorm8",
+      "unorm8x2",
+      "unorm8x4",
+      "snorm8",
+      "snorm8x2",
+      "snorm8x4",
+      "uint16",
+      "uint16x2",
+      "uint16x4",
+      "sint16",
+      "sint16x2",
+      "sint16x4",
+      "unorm16",
+      "unorm16x2",
+      "unorm16x4",
+      "snorm16",
+      "snorm16x2",
+      "snorm16x4",
+      "float16",
+      "float16x2",
+      "float16x4",
+      "float32",
+      "float32x2",
+      "float32x3",
+      "float32x4",
+      "uint32",
+      "uint32x2",
+      "uint32x3",
+      "uint32x4",
+      "sint32",
+      "sint32x2",
+      "sint32x3",
+      "sint32x4",
+      "unorm10-10-10-2",
+      "unorm8x4-bgra"
+    ],
+    "GPUVertexStepMode": [
+      "vertex",
+      "instance"
+    ],
+    "GPULoadOp": [
+      "load",
+      "clear"
+    ],
+    "GPUStoreOp": [
+      "store",
+      "discard"
+    ],
+    "GPUQueryType": [
+      "occlusion",
+      "timestamp"
+    ],
+    "GPUCanvasAlphaMode": [
+      "opaque",
+      "premultiplied"
+    ],
+    "GPUCanvasToneMappingMode": [
+      "standard",
+      "extended"
+    ],
+    "GPUDeviceLostReason": [
+      "unknown",
+      "destroyed"
+    ],
+    "GPUErrorFilter": [
+      "validation",
+      "out-of-memory",
+      "internal"
+    ],
+    "GPUBufferUsage": [
+      "MAP_READ",
+      "MAP_WRITE",
+      "COPY_SRC",
+      "COPY_DST",
+      "INDEX",
+      "VERTEX",
+      "UNIFORM",
+      "STORAGE",
+      "INDIRECT",
+      "QUERY_RESOLVE"
+    ],
+    "GPUMapMode": [
+      "READ",
+      "WRITE"
+    ],
+    "GPUTextureUsage": [
+      "COPY_SRC",
+      "COPY_DST",
+      "TEXTURE_BINDING",
+      "STORAGE_BINDING",
+      "RENDER_ATTACHMENT"
+    ],
+    "GPUShaderStage": [
+      "VERTEX",
+      "FRAGMENT",
+      "COMPUTE"
+    ],
+    "GPUColorWrite": [
+      "RED",
+      "GREEN",
+      "BLUE",
+      "ALPHA",
+      "ALL"
+    ]
+  },
+  "typedefs": {
+    "GPUBufferUsageFlags": "unsigned long",
+    "GPUMapModeFlags": "unsigned long",
+    "GPUTextureUsageFlags": "unsigned long",
+    "GPUShaderStageFlags": "unsigned long",
+    "GPUPipelineConstantValue": "double",
+    "GPUColorWriteFlags": "unsigned long",
+    "GPUBufferDynamicOffset": "unsigned long",
+    "GPUStencilValue": "unsigned long",
+    "GPUSampleMask": "unsigned long",
+    "GPUDepthBias": "long",
+    "GPUSize64": "unsigned long long",
+    "GPUIntegerCoordinate": "unsigned long",
+    "GPUIndex32": "unsigned long",
+    "GPUSize32": "unsigned long",
+    "GPUSignedOffset32": "long",
+    "GPUSize64Out": "unsigned long long",
+    "GPUIntegerCoordinateOut": "unsigned long",
+    "GPUSize32Out": "unsigned long",
+    "GPUFlagsConstant": "unsigned long"
+  },
+  "mixins": {
+    "GPUObjectBase": {
+      "members": [
+        {
+          "name": "label",
+          "type": "attribute",
+          "idl_type": "USVString",
+          "arguments": []
+        }
+      ]
+    },
+    "NavigatorGPU": {
+      "members": [
+        {
+          "name": "gpu",
+          "type": "attribute",
+          "idl_type": "GPU",
+          "arguments": []
+        }
+      ]
+    },
+    "GPUPipelineBase": {
+      "members": [
+        {
+          "name": "getBindGroupLayout",
+          "type": "operation",
+          "idl_type": "GPUBindGroupLayout",
+          "arguments": [
+            {
+              "name": "index",
+              "type": "unsigned long"
+            }
+          ]
+        },
+        {
+          "name": "getBindGroupLayout",
+          "type": "operation",
+          "idl_type": "GPUBindGroupLayout",
+          "arguments": [
+            {
+              "name": "index",
+              "type": "unsigned long"
+            }
+          ]
+        }
+      ]
+    },
+    "GPUCommandsMixin": {
+      "members": []
+    },
+    "GPUBindingCommandsMixin": {
+      "members": [
+        {
+          "name": "setBindGroup",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "index",
+              "type": "GPUIndex32"
+            },
+            {
+              "name": "bindGroup",
+              "type": "GPUBindGroup?"
+            },
+            {
+              "name": "dynamicOffsets",
+              "type": "sequence<GPUBufferDynamicOffset>"
+            }
+          ]
+        },
+        {
+          "name": "setBindGroup",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "index",
+              "type": "GPUIndex32"
+            },
+            {
+              "name": "bindGroup",
+              "type": "GPUBindGroup?"
+            },
+            {
+              "name": "dynamicOffsetsData",
+              "type": "Uint32Array"
+            },
+            {
+              "name": "dynamicOffsetsDataStart",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "dynamicOffsetsDataLength",
+              "type": "GPUSize32"
+            }
+          ]
+        },
+        {
+          "name": "setBindGroup",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "index",
+              "type": "GPUIndex32"
+            },
+            {
+              "name": "bindGroup",
+              "type": "GPUBindGroup?"
+            },
+            {
+              "name": "dynamicOffsets",
+              "type": "sequence<GPUBufferDynamicOffset>"
+            }
+          ]
+        },
+        {
+          "name": "setBindGroup",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "index",
+              "type": "GPUIndex32"
+            },
+            {
+              "name": "bindGroup",
+              "type": "GPUBindGroup?"
+            },
+            {
+              "name": "dynamicOffsetsData",
+              "type": "Uint32Array"
+            },
+            {
+              "name": "dynamicOffsetsDataStart",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "dynamicOffsetsDataLength",
+              "type": "GPUSize32"
+            }
+          ]
+        }
+      ]
+    },
+    "GPUDebugCommandsMixin": {
+      "members": [
+        {
+          "name": "pushDebugGroup",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "groupLabel",
+              "type": "USVString"
+            }
+          ]
+        },
+        {
+          "name": "popDebugGroup",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": []
+        },
+        {
+          "name": "insertDebugMarker",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "markerLabel",
+              "type": "USVString"
+            }
+          ]
+        },
+        {
+          "name": "pushDebugGroup",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "groupLabel",
+              "type": "USVString"
+            }
+          ]
+        },
+        {
+          "name": "popDebugGroup",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": []
+        },
+        {
+          "name": "insertDebugMarker",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "markerLabel",
+              "type": "USVString"
+            }
+          ]
+        }
+      ]
+    },
+    "GPURenderCommandsMixin": {
+      "members": [
+        {
+          "name": "setPipeline",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "pipeline",
+              "type": "GPURenderPipeline"
+            }
+          ]
+        },
+        {
+          "name": "setIndexBuffer",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "buffer",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "indexFormat",
+              "type": "GPUIndexFormat"
+            },
+            {
+              "name": "offset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "size",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        {
+          "name": "setVertexBuffer",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "slot",
+              "type": "GPUIndex32"
+            },
+            {
+              "name": "buffer",
+              "type": "GPUBuffer?"
+            },
+            {
+              "name": "offset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "size",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        {
+          "name": "draw",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "vertexCount",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "instanceCount",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "firstVertex",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "firstInstance",
+              "type": "GPUSize32"
+            }
+          ]
+        },
+        {
+          "name": "drawIndexed",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "indexCount",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "instanceCount",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "firstIndex",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "baseVertex",
+              "type": "GPUSignedOffset32"
+            },
+            {
+              "name": "firstInstance",
+              "type": "GPUSize32"
+            }
+          ]
+        },
+        {
+          "name": "drawIndirect",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "indirectBuffer",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "indirectOffset",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        {
+          "name": "drawIndexedIndirect",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "indirectBuffer",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "indirectOffset",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        {
+          "name": "setPipeline",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "pipeline",
+              "type": "GPURenderPipeline"
+            }
+          ]
+        },
+        {
+          "name": "setIndexBuffer",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "buffer",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "indexFormat",
+              "type": "GPUIndexFormat"
+            },
+            {
+              "name": "offset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "size",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        {
+          "name": "setVertexBuffer",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "slot",
+              "type": "GPUIndex32"
+            },
+            {
+              "name": "buffer",
+              "type": "GPUBuffer?"
+            },
+            {
+              "name": "offset",
+              "type": "GPUSize64"
+            },
+            {
+              "name": "size",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        {
+          "name": "draw",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "vertexCount",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "instanceCount",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "firstVertex",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "firstInstance",
+              "type": "GPUSize32"
+            }
+          ]
+        },
+        {
+          "name": "drawIndexed",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "indexCount",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "instanceCount",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "firstIndex",
+              "type": "GPUSize32"
+            },
+            {
+              "name": "baseVertex",
+              "type": "GPUSignedOffset32"
+            },
+            {
+              "name": "firstInstance",
+              "type": "GPUSize32"
+            }
+          ]
+        },
+        {
+          "name": "drawIndirect",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "indirectBuffer",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "indirectOffset",
+              "type": "GPUSize64"
+            }
+          ]
+        },
+        {
+          "name": "drawIndexedIndirect",
+          "type": "operation",
+          "idl_type": "undefined",
+          "arguments": [
+            {
+              "name": "indirectBuffer",
+              "type": "GPUBuffer"
+            },
+            {
+              "name": "indirectOffset",
+              "type": "GPUSize64"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "namespaces": {
+    "GPUBufferUsage": {
+      "kind": "flags",
+      "constants": [
+        {
+          "name": "MAP_READ",
+          "value": "0x0001"
+        },
+        {
+          "name": "MAP_WRITE",
+          "value": "0x0002"
+        },
+        {
+          "name": "COPY_SRC",
+          "value": "0x0004"
+        },
+        {
+          "name": "COPY_DST",
+          "value": "0x0008"
+        },
+        {
+          "name": "INDEX",
+          "value": "0x0010"
+        },
+        {
+          "name": "VERTEX",
+          "value": "0x0020"
+        },
+        {
+          "name": "UNIFORM",
+          "value": "0x0040"
+        },
+        {
+          "name": "STORAGE",
+          "value": "0x0080"
+        },
+        {
+          "name": "INDIRECT",
+          "value": "0x0100"
+        },
+        {
+          "name": "QUERY_RESOLVE",
+          "value": "0x0200"
+        }
+      ]
+    },
+    "GPUMapMode": {
+      "kind": "flags",
+      "constants": [
+        {
+          "name": "READ",
+          "value": "0x0001"
+        },
+        {
+          "name": "WRITE",
+          "value": "0x0002"
+        }
+      ]
+    },
+    "GPUTextureUsage": {
+      "kind": "flags",
+      "constants": [
+        {
+          "name": "COPY_SRC",
+          "value": "0x01"
+        },
+        {
+          "name": "COPY_DST",
+          "value": "0x02"
+        },
+        {
+          "name": "TEXTURE_BINDING",
+          "value": "0x04"
+        },
+        {
+          "name": "STORAGE_BINDING",
+          "value": "0x08"
+        },
+        {
+          "name": "RENDER_ATTACHMENT",
+          "value": "0x10"
+        }
+      ]
+    },
+    "GPUShaderStage": {
+      "kind": "flags",
+      "constants": [
+        {
+          "name": "VERTEX",
+          "value": "0x1"
+        },
+        {
+          "name": "FRAGMENT",
+          "value": "0x2"
+        },
+        {
+          "name": "COMPUTE",
+          "value": "0x4"
+        }
+      ]
+    },
+    "GPUColorWrite": {
+      "kind": "flags",
+      "constants": [
+        {
+          "name": "RED",
+          "value": "0x1"
+        },
+        {
+          "name": "GREEN",
+          "value": "0x2"
+        },
+        {
+          "name": "BLUE",
+          "value": "0x4"
+        },
+        {
+          "name": "ALPHA",
+          "value": "0x8"
+        },
+        {
+          "name": "ALL",
+          "value": "0xF"
+        }
+      ]
+    }
+  },
+  "callbacks": {},
+  "includes": [
+    {
+      "target": "Navigator",
+      "includes": "NavigatorGPU"
+    },
+    {
+      "target": "WorkerNavigator",
+      "includes": "NavigatorGPU"
+    },
+    {
+      "target": "GPUDevice",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUBuffer",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUTexture",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUTextureView",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUExternalTexture",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUSampler",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUBindGroupLayout",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUBindGroup",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUPipelineLayout",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUShaderModule",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUComputePipeline",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUComputePipeline",
+      "includes": "GPUPipelineBase"
+    },
+    {
+      "target": "GPURenderPipeline",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPURenderPipeline",
+      "includes": "GPUPipelineBase"
+    },
+    {
+      "target": "GPUCommandBuffer",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUCommandEncoder",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUCommandEncoder",
+      "includes": "GPUCommandsMixin"
+    },
+    {
+      "target": "GPUCommandEncoder",
+      "includes": "GPUDebugCommandsMixin"
+    },
+    {
+      "target": "GPUComputePassEncoder",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUComputePassEncoder",
+      "includes": "GPUCommandsMixin"
+    },
+    {
+      "target": "GPUComputePassEncoder",
+      "includes": "GPUDebugCommandsMixin"
+    },
+    {
+      "target": "GPUComputePassEncoder",
+      "includes": "GPUBindingCommandsMixin"
+    },
+    {
+      "target": "GPURenderPassEncoder",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPURenderPassEncoder",
+      "includes": "GPUCommandsMixin"
+    },
+    {
+      "target": "GPURenderPassEncoder",
+      "includes": "GPUDebugCommandsMixin"
+    },
+    {
+      "target": "GPURenderPassEncoder",
+      "includes": "GPUBindingCommandsMixin"
+    },
+    {
+      "target": "GPURenderPassEncoder",
+      "includes": "GPURenderCommandsMixin"
+    },
+    {
+      "target": "GPURenderBundle",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPURenderBundleEncoder",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPURenderBundleEncoder",
+      "includes": "GPUCommandsMixin"
+    },
+    {
+      "target": "GPURenderBundleEncoder",
+      "includes": "GPUDebugCommandsMixin"
+    },
+    {
+      "target": "GPURenderBundleEncoder",
+      "includes": "GPUBindingCommandsMixin"
+    },
+    {
+      "target": "GPURenderBundleEncoder",
+      "includes": "GPURenderCommandsMixin"
+    },
+    {
+      "target": "GPUQueue",
+      "includes": "GPUObjectBase"
+    },
+    {
+      "target": "GPUQuerySet",
+      "includes": "GPUObjectBase"
+    }
+  ]
+}
