@@ -2,12 +2,6 @@
 # LANTERN 
 
 ## Dynamic Conformance Testing of WebGPU through Specification-Driven Mutation
----
-> **Anonymous Artifact Submission**
->
-> This artifact accompanies an anonymous submission to the ISSRE 2026.
-> All identifying information has been removed for double-blind review.
-
 
 ## Overview
 
